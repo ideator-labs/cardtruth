@@ -1,0 +1,1 @@
+Vendored from https://github.com/modelcontextprotocol/experimental-ext-server-card at commit 526201bbc80231daa40ffcdecfc9da4e54e5dc93 (Apache-2.0). `server-card.schema.json` is that repo's `schema.json`. `examples/` is its `examples/ServerCard/`. The unit test runs every example against the schema.

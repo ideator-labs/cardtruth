@@ -86,8 +86,11 @@ Expected scenario lines from `bash demo.sh`:
 Manual run against one scenario:
 
 ```
-go run ./cmd/fixture --scenario stale-mcp-card --url-file /tmp/u &
-go run ./cmd/cardtruth check "$(cat /tmp/u)"
+go build -o /tmp/ct-fixture ./cmd/fixture
+rm -f /tmp/ct.url
+/tmp/ct-fixture --scenario stale-mcp-card --url-file /tmp/ct.url &
+until [ -s /tmp/ct.url ]; do sleep 0.1; done
+go run ./cmd/cardtruth check "$(cat /tmp/ct.url)"   # exit 1, FAIL mcp.live.version want="1.2.0" got="1.3.0"
 kill %1
 ```
 
